@@ -30,7 +30,9 @@ SECRET_KEY = 'django-insecure-msf-!m(^6c_2j&&i4(-ee6s62!4^=2r3hp)o#h02ac#l$(zy)%
 DEBUG = True
 
 ALLOWED_HOSTS = [
-  'cdc3-140-112-238-136.jp.ngrok.io'
+  '127.0.0.1',
+  'localhost',
+  '2ef4-2001-b011-6-394b-b1fc-a5e-9380-4808.jp.ngrok.io'
 ]
 
 
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Example foodlinebot app
     'foodlinebot.apps.FoodlinebotConfig',
+    # my_website
+    'mywebsite.apps.MywebsiteConfig',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC' # TODO: change to Taiwan time zone
 
 USE_I18N = True
 
