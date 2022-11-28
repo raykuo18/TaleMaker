@@ -8,6 +8,9 @@ from django.conf import settings
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage
+
+#圖片引用
+from PIL import Image
  
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
@@ -28,13 +31,27 @@ def callback(request):
             return HttpResponseBadRequest()
  
         for event in events:
-            print(event.message)
-            
+            print(event)
+
             if isinstance(event, MessageEvent):  # 如果有訊息事件
-                line_bot_api.reply_message(  # 回復傳入的訊息文字
-                    event.reply_token,
-                    TextSendMessage(text=event.message.text)
-                )
+                if event.message.type == "image":
+                    image_content = line_bot_api.get_message_content(event.message.id) #傳入的圖片內容
+                    print(image_content)
+                    image_name = ''.join(event.message.id) #用傳入的圖片id取名
+                    image_name = image_name.upper()+'.jpg' #副檔名可以是.jpg or .png
+
+                #把圖檔放到指定的資料夾當中
+                    path = './foodlinebot/image/' + image_name
+                    with open(path, 'wb') as fd:
+                        for chunk in image_content.iter_content():
+                            fd.write(chunk)
+                    
+                else:
+                    line_bot_api.reply_message(# 回復傳入的訊息文字
+                        event.reply_token,
+                        TextSendMessage(text="please give me a photo") #如果user傳文字 會要求傳圖片
+                    )
+
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
