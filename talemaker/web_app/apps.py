@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FoodlinebotConfig(AppConfig):
+class WebAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'foodlinebot'
+    name = 'web_app'

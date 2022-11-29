@@ -1,4 +1,4 @@
-"""mylinebot URL Configuration
+"""talemaker URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('foodlinebot/', include('foodlinebot.urls'))
+    path('ai_line_bot/', include('ai_line_bot.urls')),
 ]

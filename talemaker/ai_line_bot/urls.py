@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
- 
+
+views.ChatBot()
 urlpatterns = [
-    path('callback', views.callback)
+    path('callback', views.ChatBot.callback)
 ]
