@@ -11,6 +11,7 @@ from linebot.models import MessageEvent, TextSendMessage
 
 #圖片引用
 from PIL import Image
+from datetime import datetime
  
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
@@ -35,21 +36,28 @@ def callback(request):
 
             if isinstance(event, MessageEvent):  # 如果有訊息事件
                 if event.message.type == "image":
-                    image_content = line_bot_api.get_message_content(event.message.id) #傳入的圖片內容
+                    image_content = line_bot_api.get_message_content(event.message.id) # 傳入的圖片內容
                     print(image_content)
-                    image_name = ''.join(event.message.id) #用傳入的圖片id取名
-                    image_name = image_name.upper()+'.jpg' #副檔名可以是.jpg or .png
+                    
+                    image_name = ''.join(str(datetime.now())) # 用傳入圖片的時間取名
+                    image_name = image_name.upper()+'.jpg' # 副檔名可以是 .jpg or .png
 
-                #把圖檔放到指定的資料夾當中
+                    # 把圖檔放到指定的資料夾當中
                     path = './foodlinebot/image/' + image_name
                     with open(path, 'wb') as fd:
                         for chunk in image_content.iter_content():
                             fd.write(chunk)
                     
-                else:
-                    line_bot_api.reply_message(# 回復傳入的訊息文字
+                    line_bot_api.reply_message( # 回復傳入的訊息文字
                         event.reply_token,
-                        TextSendMessage(text="please give me a photo") #如果user傳文字 會要求傳圖片
+                        TextSendMessage(text="Wait a second, I'm thinking.") # 等待主程式跑的前言
+                    )
+                    # 主程式放這裡
+
+                else:
+                    line_bot_api.reply_message( # 回復傳入的訊息文字
+                        event.reply_token,
+                        TextSendMessage(text="Please give me a photo.") # 如果user傳文字則要求傳圖片
                     )
 
         return HttpResponse()
