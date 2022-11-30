@@ -14,7 +14,7 @@ def visual_question_answering(image_file, qestion, language='en'):
       'question': f"{qestion}",
   }
 
-  pipeline_vqa = pipeline(Tasks.visual_question_answering, model=model_id, device='mps')
+  pipeline_vqa = pipeline(Tasks.visual_question_answering, model=model_id)
   return pipeline_vqa(input_vqa)
 
 def image_captioning(image_file, language='en'):
@@ -27,4 +27,5 @@ def image_captioning(image_file, language='en'):
   return pipeline_caption(image_file) 
 
 if __name__ == '__main__':
+  image_captioning("1129-181154-17210258201808.jpg")
   pass
