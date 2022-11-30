@@ -1,0 +1,16 @@
+django
+line-bot-sdk
+pillow
+opencc
+billiard
+celery
+kombu
+amqp
+redis
+torch
+torchvision
+torchaudio
+modelscope(with a lot of module, be patient! especially tokenizers, grpico, motherfucxer!)
+model scope [multi model]
+# mmcv-full
+scipy
