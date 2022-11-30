@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
   '127.0.0.1',
   'localhost',
-  'a0db-114-44-206-156.jp.ngrok.io',
+  '4a85-140-112-24-82.jp.ngrok.io',
 ]
 
 

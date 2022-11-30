@@ -42,7 +42,7 @@ class ChatBot():
   def save_and_caption(cls, event, userId):
     image_content = line_bot_api.get_message_content(event.message.id) # 傳入的圖片內容
     time = datetime.now().strftime("%m%d-%H%M%S-") # 用傳入圖片的時間取名
-    ChatBot.image_file = os.path.join(os.getcwd(), time + event.message.id + '.jpg')
+    ChatBot.image_file = os.path.join(os.getcwd(), "images", time + event.message.id + '.jpg')
     with open(ChatBot.image_file, 'wb') as fd:
       for chunk in image_content.iter_content():
         fd.write(chunk)
@@ -51,7 +51,7 @@ class ChatBot():
       message_obj(f"Wait a minute\nLet me think about this image first ...")
     )
     # TODO: Download the model
-    caption = image_captioning(ChatBot.image_file)
+    caption = image_captioning(ChatBot.image_file)['caption'] # type: ignore
     # caption = "[Caption msg]"
     line_bot_api.push_message(
       userId,
