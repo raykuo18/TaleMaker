@@ -1,0 +1,62 @@
+part 1: welcome and language choose
+user input: (anything)
+ai_line_bot: "Hello, welcome to TaleMaker ~\nChoose your language"
+
+jump out => quick_reply: "1) English 2) 繁體中文 3) 简体中文"
+if choose 1) => "Send a sticker to let me know when you are ready."
+if choose 2) => "當你準備好開始跟我對話，請傳一張貼圖給我"
+if choose 3) => "当你准备好开始跟我对话，请传一张表情贴给我"
+
+part 2: image caption and output description
+when ai_line_bot receives a sticker
+1) ai_line_bot: "Send me a photo about your life or interesting experience.\n I can't wait!"
+2) ai_line_bot: "分享一張照片有關你的生活或是生命當中有趣的經驗給我\n快！我等不及了～"
+3) ai_line_bot: "分享一张照片有关你的生活或是生命当中有趣的经验给我\n快！我等不及了～"
+
+when ai_line_bot doesn't receive a photo
+1) ai_line_bot: "Please send me a photo. I really want to know!"
+2) ai_line_bot: "拜託傳一張圖片給我，我真的很想知道"
+3) ai_line_bot: "拜托传一张图片给我，我真的很想知道"
+
+when ai_line_bot receives a photo
+1) ai_line_bot: "Wait a minute.\nLet me take a closer look at this picture"
+2) ai_line_bot: "稍等一下，讓我仔細看看這張照片"
+3) ai_line_bot: "稍等一下，让我仔细看看这张照片"
+
+ai_line_bot starts running program => output the description
+1) ai_line_bot: "Isn's it right? (y/n)"
+2) ai_line_bot: "是這麼一回事對吧？ (是/否)"
+3) ai_line_bot: "是这么一回事对吧？ (是/否)"
+
+when ai_line_bot receives "n", "no", "否" or "不是", other inputs consider as "yes" or "是" => back to line 26
+1) ai_line_bot: "It should be right this time."
+2) ai_line_bot: "這次應該對了吧"
+3) ai_line_bot: "这次应该对了吧"
+=> jump to line 39, 40 or 41
+
+part 3: questioning and reply
+when ai_line_bot receives "yes" or others
+1) ai_line_bot: "I think I know what happened.\nYou can ask me some questions now."
+2) ai_line_bot: "我想我知道事情的前因後果了\n你可以趁現在問我一些問題"
+3) ai_line_bot: "我想我知道事情的前因后果了\n你可以趁现在问我一些问题"
+
+user input: "(anything)"
+1) ai_line_bot: "Thinking..."
+2) ai_line_bot: "我想一下..."
+3) ai_line_bot: "我想一下..."
+
+after every output
+1) ai_line_bot: "You can keep asking me some questions, send me anther photo or send a sticker to leave."
+2) ai_line_bot: "你可以繼續問我一些問題、再傳一張照片給我或是傳一個貼圖跟我說再見"
+3) ai_line_bot: "你可以继续问我一些问题、再传一张照片给我或是传一个表情贴跟我说再见"
+
+ai_line_bot receives type = "text" => back to line 43
+
+ai_line_bot receives type = "image" => back to line 21
+
+part 4: close ai_line_bot
+ai_line_bot receives type = "sticker"
+1) ai_line_bot: "Goodbye, thanks for using TaleMaker."
+2) ai_line_bot: "掰掰～有空再回來找我聊聊"
+3) ai_line_bot: "掰掰～有空再回来找我聊聊"
+
