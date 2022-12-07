@@ -17,8 +17,6 @@ from datetime import datetime
 from utils.utils import str_contain_chinese, chinese_convert, message_obj
 from models.models import visual_question_answering, image_captioning
 
-import random
-import json
 from ai_line_bot.randomsentence import pick_a_sentence
 
  
@@ -72,7 +70,7 @@ class ChatBot():
     answer = visual_question_answering(ChatBot.image_file, event.message.text)['text'] # type: ignore
     line_bot_api.push_message(
       userId,
-      message_obj(f"{answer}")
+      message_obj(f"{answer}", pick_a_sentence("aftereveryoutput", "en"))
     )
 
   @classmethod
@@ -112,7 +110,7 @@ class ChatBot():
                 event.reply_token,
                 message_obj(
                   f"Hello {profile.display_name}, welcome to TaleMaker\n"\
-                  + f"You can send a image to start or stop the app!"
+                  + f"You can send a image to start the app!"
                 #   + f"\nType the following command if you want to change the default settings:\n"\
                 #   + f"[TODO],\n"\
                 #   + f"[TODO],\n"\
