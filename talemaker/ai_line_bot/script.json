@@ -1,0 +1,63 @@
+{
+        "greeting": {
+            "en": [
+                "welcome to TaleMaker\nYou can send an sticker to start and stop the app!",
+                "Hi, welcome to TaleMaker\nSend me a sticker to start our conversation!"
+            ],
+            "zh": [
+                "歡迎來到TaleMaker\n你可以傳一個貼圖給我來開始或結束",
+                "歡迎來到TaleMaker\n傳一個貼圖給我來開始我們的對話吧!"
+            ]
+        },
+        "beforeCaptioning":{
+            "en":[
+                "Send me a photo about your life or interesting experience.\n I can't wait!",
+                "How's your day? Send me a photo to let me know!"
+            ],
+            "zh":[
+                "分享一張照片有關你的生活或是生命當中有趣的經驗給我\n快!我等不及了~",
+                "今天過得如何啊？傳一張圖片讓我知道好嗎？"
+            ]
+        },
+        "afterCaptioning": {
+            "en":[
+                "Wait a minute\nLet me think about this image first ...",
+                "Wait a minute.\nLet me take a closer look at this picture."
+            ],
+            "zh":[
+                "稍等一下\n先讓我好好想想",
+                "稍等一下\n讓我仔細看看這張照片"
+            ]
+            
+        },
+        "afterdescritption":{
+            "en":[
+                "Isn't it right?\nYou can ask me some questions now.",
+                "Am I right?\nYou can ask me something about this photo."
+            ],
+            "zh":[
+                "是這麼一回事對吧？\n你可以趁現在問我一些問題",
+                "我猜對了嗎？\n你可以問我關於這張照片的一些問題"
+            ]
+        },
+        "aftereveryouput":{
+            "en":[
+                "You can keep asking me some questions, send me anther photo or send a sticker to leave.",
+                "You can ask more questions, send another photo or send a sticker to leave."
+            ],
+            "zh":[
+                "你可以繼續問我一些問題、再傳一張照片給我或是傳一個貼圖跟我說再見",
+                "你可以再問我一些問題、傳另一張照片或是傳個貼圖離開"
+            ]
+        },
+        "afterleaving":{
+            "en":[
+                "Goodbye, thanks for using TaleMaker.",
+                "Bye, I will miss you."
+            ],
+            "zh":[
+                "掰掰～有空再回來找我聊聊",
+                "掰～我會想你的"
+            ]
+        }
+    }

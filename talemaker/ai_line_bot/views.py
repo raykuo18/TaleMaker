@@ -16,6 +16,11 @@ from datetime import datetime
 
 from utils.utils import str_contain_chinese, chinese_convert, message_obj
 from models.models import visual_question_answering, image_captioning
+
+import random
+import json
+from ai_line_bot.randomsentence import pick_a_sentence
+
  
 # Setup LINE Bot api
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
@@ -48,21 +53,21 @@ class ChatBot():
         fd.write(chunk)
     line_bot_api.reply_message( # 回復傳入的訊息文字
       event.reply_token,
-      message_obj(f"Wait a minute\nLet me think about this image first ...")
+      message_obj(pick_a_sentence("afterCaptioning", "en"))
     )
     # TODO: Download the model
     caption = image_captioning(ChatBot.image_file)['caption'] # type: ignore
     # caption = "[Caption msg]"
     line_bot_api.push_message(
       userId,
-      message_obj([f"{caption}", "You can ask me some questions now"])
+      message_obj([f"{caption}", pick_a_sentence("afterdescription", "en")])
     )
     
   @classmethod
   def answer_the_question(cls, event, userId):
     line_bot_api.reply_message(
       event.reply_token,
-      message_obj(f"(Thinking ...)")
+      message_obj(f"Thinking ...")
     )
     answer = visual_question_answering(ChatBot.image_file, event.message.text)['text'] # type: ignore
     line_bot_api.push_message(
@@ -96,7 +101,7 @@ class ChatBot():
             ChatBot.bot_state = ChatBot.states.IDLE # State change
             line_bot_api.reply_message(
               event.reply_token,
-              message_obj(f"Goodbye, thanks for using TaleMaker")
+              message_obj(pick_a_sentence("afterleaving", "en"))
             )
             
               
@@ -105,18 +110,20 @@ class ChatBot():
               ChatBot.bot_state = ChatBot.states.INIT # state change
               line_bot_api.reply_message(
                 event.reply_token,
-                message_obj(f"Hello {profile.display_name}, welcome to TaleMaker\n"\
-                  + f"You can send an image to start or stop the app!"\
+                message_obj(
+                  f"Hello {profile.display_name}, welcome to TaleMaker\n"\
+                  + f"You can send a image to start or stop the app!"
                 #   + f"\nType the following command if you want to change the default settings:\n"\
                 #   + f"[TODO],\n"\
                 #   + f"[TODO],\n"\
                 #   + f"[TODO]"
+              
                 )
               )
             elif message_type != "sticker":
               line_bot_api.reply_message(
                 event.reply_token,
-                message_obj(f"Please send a sticker to start TaleMaker")
+                message_obj(pick_a_sentence("greeting", "en"))
               )
               
           elif ChatBot.bot_state == ChatBot.states.INIT:
