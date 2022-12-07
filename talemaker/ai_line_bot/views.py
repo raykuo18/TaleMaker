@@ -106,7 +106,7 @@ class ChatBot():
               line_bot_api.reply_message(
                 event.reply_token,
                 message_obj(f"Hello {profile.display_name}, welcome to TaleMaker\n"\
-                  + f"You can send an image to start and stop the app!"\
+                  + f"You can send an image to start or stop the app!"\
                 #   + f"\nType the following command if you want to change the default settings:\n"\
                 #   + f"[TODO],\n"\
                 #   + f"[TODO],\n"\
