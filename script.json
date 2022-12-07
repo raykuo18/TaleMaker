@@ -1,9 +1,14 @@
 {
     "LINEBotScript": {
-        "greeeting": [
+        "greeeting": {
+            "zh": [
             "welcome to TaleMaker\nYou can send an image to start and stop the app!",
             "more greeting text"
-        ],
+            ],
+            "en": [
+                "..."
+            ]
+        },
         "afterCaptioning": [
             "Wait a minute\nLet me think about this image first ...",
             "more ..."
