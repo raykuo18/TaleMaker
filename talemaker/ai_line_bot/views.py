@@ -129,7 +129,7 @@ class ChatBot():
               # TODO: parse and setting
               line_bot_api.reply_message(
                 event.reply_token,
-                message_obj(f"Successfully set ~ to ~")
+                message_obj(pick_a_sentence("beforeCaptioning", "en"))
               )
             elif message_type == "image":
               ChatBot.bot_state = ChatBot.states.VQA # State change
