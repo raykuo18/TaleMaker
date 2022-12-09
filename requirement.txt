@@ -10,6 +10,11 @@ redis
 torch
 torchvision
 torchaudio
+transformers
+timm
+fariseq
+unicodedata2
+zhconv
 modelscope(with a lot of module, be patient! especially tokenizers, grpico, motherfucxer!)
 model scope [multi model]
 # mmcv-full

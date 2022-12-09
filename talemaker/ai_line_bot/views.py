@@ -70,7 +70,7 @@ class ChatBot():
     answer = visual_question_answering(ChatBot.image_file, event.message.text)['text'] # type: ignore
     line_bot_api.push_message(
       userId,
-      message_obj(f"{answer}", pick_a_sentence("aftereveryoutput", "en"))
+      message_obj([f"{answer}", pick_a_sentence("aftereveryoutput", "en")])
     )
 
   @classmethod
@@ -94,6 +94,7 @@ class ChatBot():
           # Weired bug!
           userId = event.source.user_id
           profile = line_bot_api.get_profile(userId) # display_name / user_id / picture_url / status_message
+          
           
           if message_type == "sticker" and ChatBot.bot_state != ChatBot.states.IDLE: # Reset
             ChatBot.bot_state = ChatBot.states.IDLE # State change
