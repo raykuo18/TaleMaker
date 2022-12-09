@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 # Secret and Token
-LINE_CHANNEL_SECRET = '13923f5664fe34e1b25d9aa30b53863e'
-LINE_CHANNEL_ACCESS_TOKEN = 'LXnvZTjBvTPw6ff9FSBfaEaCoCczpYcU5dCnpUoVz62A+qOx4vEfhPXBWW8izxyBOHtNUMCqt+U89adYPY9UwgoJLvGAxtcrNIRpJyWcCtvdQef5EG1RYhZgrOfsACmLIxxOuDJMGaV0FcJG4jZK0QdB04t89/1O/w1cDnyilFU='
+LINE_CHANNEL_SECRET = '5fcc1e34f275f3c567290e984b12804f'
+LINE_CHANNEL_ACCESS_TOKEN = 'ZiIEScqwyaWcL0fe6oZdCanEvQYPL+2GK5K7bhSgQihtpywF6qqrOCM9acW9ObWuYMGvT5/vOEwXBJIPUi3plC2tI8jdz/VBZtCKXAlX0HGegGIyl+jVPeTxUN7bmXl9GOk6DIq6UBha5lv5vJZg2gdB04t89/1O/w1cDnyilFU='
 
 from pathlib import Path
 
@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
   '127.0.0.1',
   'localhost',
-  '.ngrok.io'
+  '.ngrok.io',
 ]
 
 

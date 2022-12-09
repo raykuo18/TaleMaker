@@ -1,5 +1,8 @@
+import os
 from opencc import OpenCC
 from linebot.models import TextSendMessage
+import json
+import random
 
 def str_contain_chinese(str: str):
   for x in str:
@@ -17,6 +20,13 @@ def message_obj(message):
     return [TextSendMessage(text=x) for x in message]
   else:
     return TextSendMessage(text=message)
+  
+def pick_a_sentence(situation = 'string', language = 'string'):
+    with open(os.path.join(os.getcwd(), 'utils/script.json'), 'r') as f:
+        data = json.load(f)
+    amount = random.randrange(len(data[situation][language]))
+    output = data[situation][language][amount]
+    return output
   
 if __name__ == '__main__':
   pass

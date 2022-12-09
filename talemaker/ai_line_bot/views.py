@@ -14,10 +14,9 @@ from enum import Enum
 from PIL import Image
 from datetime import datetime
 
-from utils.utils import str_contain_chinese, chinese_convert, message_obj
+from utils.utils import str_contain_chinese, chinese_convert, message_obj, pick_a_sentence
 from models.models import visual_question_answering, image_captioning
 
-from ai_line_bot.randomsentence import pick_a_sentence
 
  
 # Setup LINE Bot api
